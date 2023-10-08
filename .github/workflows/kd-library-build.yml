@@ -1,0 +1,59 @@
+# Copyright 2017 The Kubernetes Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Build kd-library package - Experimental Test
+on:
+  push:
+    branches: [feat/pre-upgrade-angular-material]
+permissions:
+  contents: read
+env:
+  NG_CLI_ANALYTICS: ci
+  NODE_OPTIONS: "--max-old-space-size=8192"
+  TERM: xterm
+jobs:
+  check:
+    name: Static check
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: modules/web
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.14.0
+          #registry-url: 'https://npm.pkg.github.com'
+          # Defaults to the user or organization that owns the workflow file
+          #scope: '@kubernetes/kd-library' # example
+
+      - name: Install web dependencies
+        working-directory: modules/web
+        #: npm i --force
+        run: YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install
+
+      - name: Build kd-library
+        working-directory: modules/web
+        run: |
+          npm run build:kd-library
+
+      - name: Build kd-library Result
+        working-directory: modules/web
+        run: |
+          ls dist/kd-library

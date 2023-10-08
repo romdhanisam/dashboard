@@ -201,6 +201,29 @@
           }
         }
       }
+    },
+    "kd-library": {
+      "projectType": "library",
+      "root": "projects/kd-library",
+      "sourceRoot": "projects/kd-library/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/kd-library/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/kd-library/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/kd-library/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
     }
   },
   "schematics": {
