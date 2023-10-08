@@ -12,20 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Build kd-library package - Experimental Test
+name: Build and publish kd-library package - Experimental Test
 on:
   push:
     branches: [feat/pre-upgrade-angular-material]
 permissions:
   contents: read
+  packages: write
 env:
   NG_CLI_ANALYTICS: ci
   NODE_OPTIONS: "--max-old-space-size=8192"
   TERM: xterm
 jobs:
-  check:
-    if: false
-    name: Static check
+  build_publish:
+    name: Build and publish experimental lib
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -40,10 +40,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.14.0
+          registry-url: 'https://npm.pkg.github.com' #'https://registry.npmjs.org'
+          # scope defaults to the user or organization that owns the workflow file
+          # https://github.com/actions/setup-node/blob/main/README.md?plain=1#L72
+          scope: ''
+          #scope: '@kubernetes/kd-library'
 
       - name: Install web dependencies
         working-directory: modules/web
-        #: npm i --force
         run: YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install
 
       - name: Build kd-library
@@ -55,3 +59,15 @@ jobs:
         working-directory: modules/web
         run: |
           ls dist/kd-library
+
+      - name: Pre - Publish ...
+        working-directory: modules/web/dist/kd-library
+        run: |
+          npm config get registry
+          npm pack --dry-run
+
+      - name: Publish 📦 ...
+        working-directory: modules/web/dist/kd-library
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_CI }}

@@ -1,10 +1,13 @@
 {
-  "name": "kd-library",
-  "version": "0.0.1",
+  "name": "@romdhanisam/kd-library",
+  "version": "0.0.1-next.0",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kubernetes/dashboard.git"
+    "url": "https://github.com/romdhanisam/dashboard.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "engines": {
     "node": ">=18.14.0"
