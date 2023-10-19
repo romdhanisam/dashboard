@@ -15,7 +15,7 @@
 name: CI / Web
 on:
   push:
-    branches: [master]
+    branches: [debug/test]
   pull_request:
     branches: [master]
 permissions:
@@ -41,6 +41,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.14.0
+
+      - name: Show yarnrc  file
+        working-directory: modules/web
+        run: cat .yarnrc.yml
 
       - name: Install web dependencies
         working-directory: modules/web
