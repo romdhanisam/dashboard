@@ -23,6 +23,7 @@ permissions:
 env:
   NG_CLI_ANALYTICS: ci
   NODE_OPTIONS: "--max-old-space-size=8192"
+  YARN_ENABLE_IMMUTABLE_INSTALLS: false
   TERM: xterm
 jobs:
   check:
@@ -44,7 +45,7 @@ jobs:
 
       - name: Install web dependencies
         working-directory: modules/web
-        run: YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn
+        run: yarn
 
       - name: Check
         run: yarn check
