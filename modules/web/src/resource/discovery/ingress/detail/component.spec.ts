@@ -37,7 +37,7 @@ import {IngressDetailComponent} from './component';
 const miniName = 'my-mini-ingress';
 const maxiName = 'my-maxi-ingress';
 
-@Component({selector: 'test', templateUrl: './template.html'})
+@Component({selector: 'test-mini', templateUrl: './template.html'})
 class MiniTestComponent {
   isInitialized = true;
   ingress: IngressDetail = {

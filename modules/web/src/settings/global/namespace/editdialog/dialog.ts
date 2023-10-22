@@ -26,7 +26,7 @@ export interface EditFallbackNamespaceDialogData {
 export class EditFallbackNamespaceDialog {
   namespaces: string[] = [];
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: EditFallbackNamespaceDialogData) {
+  constructor(@Inject(MAT_DIALOG_DATA) private readonly data: EditFallbackNamespaceDialogData) {
     this.namespaces = Array.from(data.namespaces);
   }
 

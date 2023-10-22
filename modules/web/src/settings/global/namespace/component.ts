@@ -37,7 +37,7 @@ enum BreakpointElementCount {
   Medium = 2,
 }
 
-enum Controls {
+export enum Controls {
   DefaultNamespace = 'defaultNamespace',
   FallbackList = 'fallbackList',
 }
