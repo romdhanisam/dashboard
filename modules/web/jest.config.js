@@ -26,6 +26,11 @@ const config = {
       }
     ]
   },
+  // coverageReporters: ['clover', 'json', 'lcov', ['text', {skipFull: false}]],
+  coverageReporters: ['clover', 'json', 'lcov', ['text-summary', {skipFull: false}]],
+  // coverageThreshold: {
+  //     global: {branches: 50, functions: 50, lines: 50, statements: -10}
+  // },
   moduleNameMapper: {
     "^@api/(.*)$": "<rootDir>/typings/$1",
     "^@common/(.*)$": "<rootDir>/common/$1",
