@@ -15,6 +15,14 @@
 // eslint-disable-next-line node/no-extraneous-import
 import {jest} from '@jest/globals';
 
+jest.mock('xterm', () => ({}));
+const SockJS = require('sockjs-client');
+Object.defineProperty(global, 'SockJS', {
+  get() {
+    return SockJS;
+  },
+});
+
 Object.defineProperty(document, 'doctype', {value: '<!DOCTYPE html>'});
 
 /**

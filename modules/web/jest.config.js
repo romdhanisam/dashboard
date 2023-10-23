@@ -27,7 +27,7 @@ const config = {
     ]
   },
   // coverageReporters: ['clover', 'json', 'lcov', ['text', {skipFull: false}]],
-  coverageReporters: ['clover', 'json', 'lcov', ['text-summary', {skipFull: false}]],
+  // coverageReporters: ['clover', 'json', 'lcov', ['text-summary', {skipFull: false}]],
   // coverageThreshold: {
   //     global: {branches: 50, functions: 50, lines: 50, statements: -10}
   // },
