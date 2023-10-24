@@ -22,6 +22,10 @@ Object.defineProperty(global, 'SockJS', {
     return SockJS;
   },
 });
+global.window = Object.create(window);
+// @ts-ignore
+import {System} from 'systemjs';
+Object.defineProperty(window, 'System', {value: System});
 
 Object.defineProperty(document, 'doctype', {value: '<!DOCTYPE html>'});
 
