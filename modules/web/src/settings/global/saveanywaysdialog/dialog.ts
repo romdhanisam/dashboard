@@ -21,8 +21,4 @@ import {MatDialogRef} from '@angular/material/dialog';
 })
 export class SaveAnywayDialog {
   constructor(public dialogRef: MatDialogRef<SaveAnywayDialog>) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 }

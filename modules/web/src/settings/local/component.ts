@@ -13,8 +13,7 @@
 // limitations under the License.
 
 import {DOCUMENT} from '@angular/common';
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {MatSelect} from '@angular/material/select';
+import {Component, Inject, OnInit} from '@angular/core';
 import {LocalSettings, Theme} from '@api/root.api';
 import {IConfig, LanguageConfig} from '@api/root.ui';
 import {LocalSettingsService} from '@common/services/global/localsettings';
@@ -35,8 +34,6 @@ export class LocalSettingsComponent implements OnInit {
   themes: Theme[];
   selectedTheme: string;
   systemTheme: string;
-
-  @ViewChild(MatSelect, {static: true}) private readonly select_: MatSelect;
 
   constructor(
     private readonly settings_: LocalSettingsService,

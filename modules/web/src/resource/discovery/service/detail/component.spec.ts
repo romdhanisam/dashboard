@@ -36,7 +36,7 @@ import {ServiceDetailComponent} from './component';
 
 const maxiName = 'my-maxi-service';
 
-@Component({selector: 'test', templateUrl: './template.html'})
+@Component({selector: 'test-maxi', templateUrl: './template.html'})
 class MaxiTestComponent {
   isInitialized = true;
   service: ServiceDetail = {
